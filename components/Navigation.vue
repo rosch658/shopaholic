@@ -1,7 +1,7 @@
 <template>
   <header class="ui-container">
     <NuxtLink to="/" class="title">SHOPAHOLIC</NuxtLink>
-    <SearchBar class="nav-search" v-if="route.path === '/search'" />
+    <SearchBar class="nav-search" v-if="route.path !== '/'" />
     <div class="nav-section">
       <button class="ui-button link" @click="handleEssay" v-if="loginToken">
         Essay

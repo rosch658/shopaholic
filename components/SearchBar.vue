@@ -28,7 +28,6 @@ function handleSubmit(input) {
 
 <style scoped>
 .search-bar {
-  width: 100%;
   display: flex;
   justify-content: center;
 }

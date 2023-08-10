@@ -20,13 +20,13 @@ const minPrice = computed(() => route.query.minPrice);
 const maxPrice = computed(() => route.query.maxPrice);
 
 async function fetchProducts() {
-  const { products } = await useFetchProducts(keyword, {
+  const { filteredData } = await useFetchProducts(keyword, {
     category,
     brands,
     minPrice,
     maxPrice,
   });
-  productList.value = products.value;
+  productList.value = filteredData.value;
 }
 
 fetchProducts();

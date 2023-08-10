@@ -1,4 +1,5 @@
 import axios from "axios";
+const filteredData = ref([]);
 const previousKeyword = ref("");
 const products = ref([]);
 export default async function useFetchProducts(keyword, filters) {
@@ -33,43 +34,43 @@ export default async function useFetchProducts(keyword, filters) {
   }
 
   // Filtered products
-
+  filteredData.value = products.value;
   const { category, brands, minPrice, maxPrice } = filters;
 
   if (category.value && category.value !== "all") {
-    const newData = products.value.filter(
+    const newData = filteredData.value.filter(
       (product) => product.category === category.value
     );
-    products.value = newData;
+    filteredData.value = newData;
   }
 
   if (brands.value && brands.value !== "all") {
     const brandsArr = brands.value.split(",");
-    const newData = products.value.filter((product) =>
+    const newData = filteredData.value.filter((product) =>
       brandsArr.includes(product.brand)
     );
-    products.value = newData;
+    filteredData.value = newData;
   }
 
   if (maxPrice.value || minPrice.value) {
     if (maxPrice.value && !minPrice.value) {
-      const newData = products.value.filter(
+      const newData = filteredData.value.filter(
         (product) => product.price < maxPrice.value
       );
-      products.value = newData;
+      filteredData.value = newData;
     } else if (!maxPrice.value && minPrice.value) {
-      const newData = products.value.filter(
+      const newData = filteredData.value.filter(
         (product) => product.price > minPrice.value
       );
-      products.value = newData;
+      filteredData.value = newData;
     } else {
-      const newData = products.value.filter(
+      const newData = filteredData.value.filter(
         (product) =>
           product.price > minPrice.value && product.price < maxPrice.value
       );
-      products.value = newData;
+      filteredData.value = newData;
     }
   }
 
-  return { products };
+  return { filteredData };
 }
