@@ -151,7 +151,7 @@ function handlePrice() {
 
 <style>
 .side-bar {
-  width: 50rem;
+  min-width: 35rem;
   height: 24rem;
   box-shadow: 0 0 3px 0 rgba(46 38 21 / 0.3);
   background-color: #fff;
@@ -220,7 +220,7 @@ function handlePrice() {
 }
 
 .checkbox label {
-  width: 18rem;
+  width: 20rem;
   display: inline-block;
 }
 
